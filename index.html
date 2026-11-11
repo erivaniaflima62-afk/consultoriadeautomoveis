@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>consultoriadeautomoveis-go — Guia Editorial & Inteligência Veicular</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              gold: '#fbbf24',
+              cyan: '#06b6d4',
+              dark: '#030712',
+              card: '#0b0f19',
+              border: '#1e293b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #030712; color: #94a3b8; }
+    .glass-box { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-box:hover { border-color: rgba(6, 182, 212, 0.3); }
+    .glass-nav { background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .gradient-text { background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gold-gradient-text { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- BANNER TRANSPARÊNCIA INSTITUCIONAL -->
+  <div id="topDisclaimer" class="bg-slate-950 border-b border-cyan-500/20 text-xs py-3 px-4 relative z-50">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 pr-6">
+      <div class="flex items-start md:items-center gap-2">
+        <span class="inline-block px-2.5 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold rounded text-[10px] uppercase tracking-wider shrink-0">Aviso Institucional</span>
+        <p class="text-slate-400 leading-tight">
+          O portal <strong class="text-white">consultoriadeautomoveis-go</strong> é mantido pela entidade privada <strong class="text-white">Arte Cafe Gigi Fazendo Arte LTDA</strong> (CNPJ: 03.066.128/0001-46, CNAE 56.11-2-03). Conteúdo estritamente <strong class="text-cyan-400">editorial, educativo e informativo</strong>. Não prestamos serviços públicos, não emitimos laudos oficiais e não possuímos vínculo governamental.
+        </p>
+      </div>
+      <button onclick="document.getElementById('topDisclaimer').style.display='none'" class="text-slate-500 hover:text-white transition-colors text-base font-bold ml-2">✕</button>
+    </div>
+  </div>
+
+  <!-- HEADER PREMIER -->
+  <header class="sticky top-0 z-40 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- LOGO -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-amber-500 p-[1px] transition-transform group-hover:scale-105">
+          <div class="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
+            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"/></svg>
+          </div>
+        </div>
+        <span class="font-display font-bold text-xl text-white tracking-tight">consultoriade<span class="text-amber-400">automoveis-go</span></span>
+      </a>
+
+      <!-- NAV -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#consultas" class="hover:text-cyan-400 transition-colors">Serviços & Consultas</a>
+        <a href="#calculadora" class="hover:text-cyan-400 transition-colors">Simulador TCO</a>
+        <a href="#checklist" class="hover:text-cyan-400 transition-colors">Scanner de Vistoria</a>
+        <a href="#artigos" class="hover:text-cyan-400 transition-colors">Guia Técnico</a>
+        <a href="#sobre" class="hover:text-cyan-400 transition-colors">Transparência CNPJ</a>
+      </nav>
+
+      <a href="#contato" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 border border-cyan-500/40 text-cyan-300 hover:border-cyan-400 font-semibold text-xs uppercase tracking-wider transition-all shadow-lg shadow-cyan-500/10">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        Redação Editorial
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION FUTURISTA -->
+  <section class="relative py-24 overflow-hidden border-b border-slate-900">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-slate-950 to-slate-950"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs text-amber-400">
+            <span>✨ Portal de Inteligência Veicular 2026</span>
+          </div>
+          <h1 class="font-display text-4xl sm:text-6xl font-extrabold text-white leading-[1.15]">
+            Decisões automotivas baseadas em <span class="gradient-text">dados precisos e vistorias reais.</span>
+          </h1>
+          <p class="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
+            Seu guia independente para verificação de histórico veicular, análise de desvalorização, vistorias pré-compra e orientação técnica imparcial.
+          </p>
+          
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="#consultas" class="px-7 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold hover:brightness-110 transition-all shadow-lg shadow-cyan-500/25">
+              Explorar Consultas Veiculares
+            </a>
+            <a href="#calculadora" class="px-7 py-4 rounded-xl bg-slate-900 text-white font-semibold hover:bg-slate-800 border border-slate-800 transition-all">
+              Simular Custo de Posse
+            </a>
+          </div>
+
+          <!-- METRICAS RÁPIDAS -->
+          <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-900">
+            <div>
+              <span class="block text-2xl font-bold font-display text-white">100%</span>
+              <span class="text-xs text-slate-500 uppercase tracking-wider">Independente</span>
+            </div>
+            <div>
+              <span class="block text-2xl font-bold font-display text-cyan-400">6+</span>
+              <span class="text-xs text-slate-500 uppercase tracking-wider">Guias Práticos</span>
+            </div>
+            <div>
+              <span class="block text-2xl font-bold font-display text-amber-400">RS / BR</span>
+              <span class="text-xs text-slate-500 uppercase tracking-wider">Cobertura Nacional</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="glass-box rounded-3xl p-6 relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
+            <div class="relative h-72 rounded-2xl overflow-hidden mb-6 group">
+              <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80" alt="Inspeção Veicular" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-cyan-400 bg-cyan-950/80 border border-cyan-800 px-2 py-1 rounded">Guia de Mercado</span>
+                  <h3 class="text-white font-bold text-lg mt-1">Vistoria Cautelar vs. Física</h3>
+                </div>
+              </div>
+            </div>
+            
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs text-slate-400 pb-2 border-b border-slate-800">
+                <span>Status da Análise:</span>
+                <span class="text-emerald-400 font-mono font-semibold">● Atualizado 2026</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Confira como mapear sinistros, leilões passados e alterações estruturais antes de transferir qualquer valor de sinal.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPAIS SERVIÇOS DE CONSULTAS AUTOMOTIVAS -->
+  <section id="consultas" class="py-24 border-b border-slate-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Inteligência Automotiva</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Principais Consultas e Verificações Veiculares</h2>
+        <p class="text-slate-400 text-sm mt-3">Mapeamento dos principais pontos de atenção exigidos antes de fechar negócio no mercado automotivo.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="glass-box p-8 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-6">
+              🛡️
+            </div>
+            <h3 class="text-white font-bold text-xl mb-3">Histórico de Sinistro & Leilão</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Entenda como consultar registros de Perda Total (PT), pasagens por leilões judiciais ou de seguradoras e apontamentos de acidentes graves.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-cyan-400 font-semibold">Análise Estrutural</span>
+            <span class="text-slate-500">Guia Informativo</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-box p-8 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-6">
+              ⚖️
+            </div>
+            <h3 class="text-white font-bold text-xl mb-3">Débitos, Impostos & RENAJUD</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Saiba como verificar pendências de IPVA, licenciamento, multas municipais/estaduais, restrições judiciais (RENAJUD) e alienação fiduciária.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-amber-400 font-semibold">Regularidade Fiscal</span>
+            <span class="text-slate-500">Checklist Jurídico</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-box p-8 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-6">
+              🚨
+            </div>
+            <h3 class="text-white font-bold text-xl mb-3">Queixa de Roubo & Furto</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Orientações sobre cruzamento de dados com bases de segurança pública estaduais e federais para identificar impedimentos criminais.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-indigo-400 font-semibold">Segurança Jurídica</span>
+            <span class="text-slate-500">Base Policial</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glass-box p-8 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-6">
+              📈
+            </div>
+            <h3 class="text-white font-bold text-xl mb-3">Cotação FIPE & Tendência</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Como acompanhar o histórico de preços oficial FIPE, estimar liquidez de revenda e calcular a curva de desvalorização anual do modelo.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-emerald-400 font-semibold">Precificação de Mercado</span>
+            <span class="text-slate-500">Índice FIPE</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="glass-box p-8 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center text-xl mb-6">
+              🔍
+            </div>
+            <h3 class="text-white font-bold text-xl mb-3">Decodificação de Chassi (VIN)</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Métodos de conferência dos numerais gravados no chassi, vidros e bloco do motor para validar o ano/modelo real de fabricação.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-rose-400 font-semibold">Autenticidade Técnica</span>
+            <span class="text-slate-500">Gravações Originais</span>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="glass-box p-8 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-xl mb-6">
+              🔔
+            </div>
+            <h3 class="text-white font-bold text-xl mb-3">Recall de Fábrica Pendente</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Como identificar chamados técnicos não atendidos pelas montadoras para reparo gratuito de airbags, freios e direção.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-sky-400 font-semibold">Segurança Veicular</span>
+            <span class="text-slate-500">Boletins Montadora</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVO RECURSO: SIMULADOR INTERATIVO DE CUSTO MENSAL (TCO) -->
+  <section id="calculadora" class="py-24 border-b border-slate-900 bg-slate-950/40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-box p-8 md:p-12 rounded-3xl border border-cyan-500/20 relative">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Simulador Interativo</span>
+          <h2 class="font-display text-3xl font-bold text-white mt-2">Calculadora Estimativa de Custo Mensal (TCO)</h2>
+          <p class="text-xs text-slate-400 mt-2">Simule os gastos com combustível, manutenção de rotina e apólice privada.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4 text-sm">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Km Rodados por Mês</label>
+              <input type="number" id="kmMes" value="1000" oninput="calcularTCO()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Média de Consumo (km/L)</label>
+              <input type="number" id="mediaKml" value="10" oninput="calcularTCO()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Preço do Combustível (R$/L)</label>
+              <input type="number" id="precoGas" value="5.80" step="0.10" oninput="calcularTCO()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Seguro Anual Estimado (R$)</label>
+              <input type="number" id="seguroAno" value="3600" oninput="calcularTCO()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400">
+            </div>
+          </div>
+
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 text-center space-y-4">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Custo Operacional Mensal Estimado</span>
+            <span id="resultadoTCO" class="text-4xl font-extrabold font-display text-cyan-400 block">R$ 980,00</span>
+            <div class="pt-4 border-t border-slate-800 text-xs text-slate-500 space-y-1 text-left">
+              <p>• Combustível: <span id="tcoComb" class="text-slate-300 font-mono">R$ 580,00</span></p>
+              <p>• Seguro Mensal: <span id="tcoSeg" class="text-slate-300 font-mono">R$ 300,00</span></p>
+              <p>• Reserva Manutenção: <span id="tcoManut" class="text-slate-300 font-mono">R$ 100,00</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCANNER DE VISTORIA COM BARRA DE PROGRESSO -->
+  <section id="checklist" class="py-24 border-b border-slate-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Scanner Prático</span>
+        <h2 class="font-display text-3xl font-bold text-white mt-2">Checklist Interativo de Vistoria Física</h2>
+        <p class="text-slate-400 text-sm mt-2">Marque as verificações à medida que inspecionar o automóvel.</p>
+      </div>
+
+      <div class="glass-box p-8 rounded-3xl space-y-4">
+        <!-- BARRA DE PROGRESSO -->
+        <div class="mb-6">
+          <div class="flex justify-between text-xs text-slate-400 mb-2">
+            <span>Progresso da Inspeção</span>
+            <span id="progressPercent" class="text-cyan-400 font-bold">0%</span>
+          </div>
+          <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
+            <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-500 to-amber-400 w-0 transition-all duration-300"></div>
+          </div>
+        </div>
+
+        <!-- ITEMS -->
+        <label class="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:border-cyan-500/40 transition-all">
+          <input type="checkbox" onchange="updateProgress()" class="check-item w-5 h-5 rounded accent-cyan-500">
+          <span class="text-slate-300 text-sm">Verificar pontos de solda no cofre do motor, painel traseiro e torres de suspensão.</span>
+        </label>
+
+        <label class="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:border-cyan-500/40 transition-all">
+          <input type="checkbox" onchange="updateProgress()" class="check-item w-5 h-5 rounded accent-cyan-500">
+          <span class="text-slate-300 text-sm">Conferir numeração do chassi nos vidros e etiquetagem nos blocos de componentes.</span>
+        </label>
+
+        <label class="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:border-cyan-500/40 transition-all">
+          <input type="checkbox" onchange="updateProgress()" class="check-item w-5 h-5 rounded accent-cyan-500">
+          <span class="text-slate-300 text-sm">Inspecionar desgaste dos pneus e estepe (desgaste irregular indica desalinhamento).</span>
+        </label>
+
+        <label class="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:border-cyan-500/40 transition-all">
+          <input type="checkbox" onchange="updateProgress()" class="check-item w-5 h-5 rounded accent-cyan-500">
+          <span class="text-slate-300 text-sm">Checar histórico de revisões com manual carimbado ou notas fiscais mecânicas.</span>
+        </label>
+
+        <label class="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 border border-slate-800 cursor-pointer hover:border-cyan-500/40 transition-all">
+          <input type="checkbox" onchange="updateProgress()" class="check-item w-5 h-5 rounded accent-cyan-500">
+          <span class="text-slate-300 text-sm">Realizar teste de rodagem: verificar ruídos de suspensão, embreagem e alinhamento.</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIGOS EDITORIAIS -->
+  <section id="artigos" class="py-24 border-b border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-end mb-16">
+        <div>
+          <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Publicações Técnicas</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Guias & Artigos Recentes</h2>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <article class="glass-box rounded-3xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80" alt="Motor em Manutenção" class="h-48 w-full object-cover">
+            <div class="p-6">
+              <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider">Manutenção</span>
+              <h3 class="text-white font-bold text-xl mt-2 mb-3">Revisão por Quilometragem vs. Tempo</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">Entenda a oxidação do óleo no carter e os riscos de ignorar os prazos temporais.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="openModalArticle('artigo1')" class="text-cyan-400 hover:text-cyan-300 font-bold text-sm">Ler Artigo Completo →</button>
+          </div>
+        </article>
+
+        <article class="glass-box rounded-3xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Avaliação Usados" class="h-48 w-full object-cover">
+            <div class="p-6">
+              <span class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Avaliação</span>
+              <h3 class="text-white font-bold text-xl mt-2 mb-3">Como Funciona a Avaliação de Usados?</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">Mapeamento dos critérios mais relevantes para determinação de valor justo de mercado.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="openModalArticle('artigo2')" class="text-amber-400 hover:text-amber-300 font-bold text-sm">Ler Artigo Completo →</button>
+          </div>
+        </article>
+
+        <article class="glass-box rounded-3xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Farol de Carro" class="h-48 w-full object-cover">
+            <div class="p-6">
+              <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Inspeção Visual</span>
+              <h3 class="text-white font-bold text-xl mt-2 mb-3">Checklist Visual de Lataria e Pintura</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">Identifique repinturas, frestas desiguais e pequenas ondulações na lataria.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="openModalArticle('artigo3')" class="text-indigo-400 hover:text-indigo-300 font-bold text-sm">Ler Artigo Completo →</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARÊNCIA INSTITUCIONAL & CNPJ DADOS REAIS -->
+  <section id="sobre" class="py-24 border-b border-slate-900 bg-slate-950/30">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="glass-box p-8 md:p-12 rounded-3xl border border-amber-500/20 relative">
+        <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-wider">Transparência Cadastral</span>
+        <h2 class="font-display text-3xl font-bold text-white mt-4 mb-6">Sobre a Mantenedora do Portal</h2>
+        
+        <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
+          <p>
+            O portal <strong class="text-white">consultoriadeautomoveis-go</strong> é mantido e publicado pela empresa <strong class="text-white">Arte Cafe Gigi Fazendo Arte LTDA</strong>, inscrita sob o CNPJ <strong class="text-white">03.066.128/0001-46</strong>, fundada em <strong class="text-white">29/03/1999</strong>, situada no município de <strong class="text-white">Caxias do Sul / RS</strong>.
+          </p>
+          <p>
+            Sua atividade econômica principal registrada junto à Receita Federal é <strong class="text-cyan-400">56.11-2-03 - Lanchonetes, casas de chá, de sucos e similares</strong>, apresentando situação cadastral <strong class="text-emerald-400">Ativa</strong>.
+          </p>
+          <p class="text-slate-400 text-xs bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+            <strong>Esclarecimento ao Leitor:</strong> Esclarecemos abertamente ao público que a mantenedora publica o portal consultoriadeautomoveis-go exclusivamente com objetivos <strong>editoriais, educativos e de orientação informativa</strong>. O site não vende veículos, não faz intermediação comercial e não possui vínculo com DETRAN ou órgãos do governo.
+          </p>
+        </div>
+
+        <!-- QUADRO RESUMO CADASTRO -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-800 text-xs">
+          <div>
+            <span class="text-slate-500 block">Razão Social</span>
+            <strong class="text-white">Gigi Fazendo Arte LTDA</strong>
+          </div>
+          <div>
+            <span class="text-slate-500 block">CNPJ / Situação</span>
+            <strong class="text-white">03.066.128/0001-46 (Ativa)</strong>
+          </div>
+          <div>
+            <span class="text-slate-500 block">Data de Fundação</span>
+            <strong class="text-white">29/03/1999</strong>
+          </div>
+          <div>
+            <span class="text-slate-500 block">CNAE Principal</span>
+            <strong class="text-white">56.11-2-03 (Lanchonetes/Chá)</strong>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO & ENDEREÇO ATUALIZADOS -->
+  <section id="contato" class="py-24 border-b border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Atendimento Editorial</span>
+        <h2 class="font-display text-3xl font-bold text-white mt-2">Canais de Contato Institucional</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- CANAIS -->
+        <div class="glass-box p-8 rounded-3xl space-y-6">
+          <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-3">Fale Conosco</h3>
+          
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">📞</div>
+            <div>
+              <h4 class="text-xs font-bold text-slate-400 uppercase">Telefone de Contato</h4>
+              <p class="text-white font-medium text-lg mt-1">(54) 3223-0655</p>
+              <a href="tel:5432230655" class="inline-block mt-1 text-xs text-cyan-400 hover:underline">Clique para Ligar →</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 pt-4 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">🏢</div>
+            <div>
+              <h4 class="text-xs font-bold text-slate-400 uppercase">Empresa Mantenedora</h4>
+              <p class="text-white font-semibold">Arte Cafe Gigi Fazendo Arte LTDA</p>
+              <p class="text-xs text-amber-400 font-mono mt-1">CNPJ: 03.066.128/0001-46</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENDEREÇO CORRESPONDENCIA -->
+        <div class="glass-box p-8 rounded-3xl space-y-6">
+          <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-3">Localização e Correspondência</h3>
+
+          <div class="space-y-2 text-sm text-slate-300">
+            <p><strong class="text-white">Logradouro:</strong> Rua Joao Jose da Cruz, 139</p>
+            <p><strong class="text-white">Bairro:</strong> Pio X</p>
+            <p><strong class="text-white">CEP:</strong> 95034-380</p>
+            <p><strong class="text-white">Cidade / UF:</strong> Caxias do Sul – Rio Grande do Sul (RS)</p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800">
+            <span class="text-xs font-bold text-slate-400 uppercase block mb-2">Endereço Postal Oficial:</span>
+            <div class="bg-slate-950 p-4 rounded-xl text-xs font-mono text-slate-400 leading-relaxed border border-slate-800">
+              Arte Cafe Gigi Fazendo Arte LTDA<br>
+              Rua Joao Jose da Cruz 139 — Bairro Pio X<br>
+              Caxias do Sul / RS — CEP 95034-380
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-slate-950 border-t border-slate-900 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <span class="font-display font-bold text-lg text-white">consultoriade<span class="text-amber-400">automoveis-go</span></span>
+          <p class="mt-1 text-slate-500">Portal informativo sobre veículos mantido por entidade privada.</p>
+        </div>
+        <div class="flex gap-6 text-slate-400">
+          <button onclick="openLegalModal('privacidade')" class="hover:text-cyan-400 transition-colors">Política de Privacidade</button>
+          <button onclick="openLegalModal('termos')" class="hover:text-cyan-400 transition-colors">Termos de Uso</button>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+        <p>© 2026 consultoriadeautomoveis-go — Todos os direitos reservados.</p>
+        <p class="text-[11px]">Arte Cafe Gigi Fazendo Arte LTDA — CNPJ 03.066.128/0001-46</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL ARTIGOS -->
+  <div id="articleModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-box max-w-2xl w-full max-h-[85vh] rounded-3xl overflow-y-auto p-8 relative text-slate-200">
+      <button onclick="closeArticleModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+      <div id="articleModalContent" class="space-y-4"></div>
+    </div>
+  </div>
+
+  <!-- MODAL LEGAL -->
+  <div id="legalModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-box max-w-2xl w-full max-h-[85vh] rounded-3xl overflow-y-auto p-8 relative text-slate-200">
+      <button onclick="closeLegalModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+      <div id="legalModalContent" class="space-y-4 text-sm leading-relaxed"></div>
+    </div>
+  </div>
+
+  <script>
+    // SIMULADOR TCO
+    function calcularTCO() {
+      const km = parseFloat(document.getElementById('kmMes').value) || 0;
+      const media = parseFloat(document.getElementById('mediaKml').value) || 1;
+      const preco = parseFloat(document.getElementById('precoGas').value) || 0;
+      const seguro = parseFloat(document.getElementById('seguroAno').value) || 0;
+
+      const custoCombustivel = (km / media) * preco;
+      const custoSeguro = seguro / 12;
+      const custoManutencao = 100; // Valor de reserva fixo estimativo
+
+      const total = custoCombustivel + custoSeguro + custoManutencao;
+
+      document.getElementById('resultadoTCO').innerText = 'R$ ' + total.toFixed(2).replace('.', ',');
+      document.getElementById('tcoComb').innerText = 'R$ ' + custoCombustivel.toFixed(2).replace('.', ',');
+      document.getElementById('tcoSeg').innerText = 'R$ ' + custoSeguro.toFixed(2).replace('.', ',');
+      document.getElementById('tcoManut').innerText = 'R$ ' + custoManutencao.toFixed(2).replace('.', ',');
+    }
+
+    // CHECKLIST PROGRESS BAR
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('.check-item');
+      let checked = 0;
+      checkboxes.forEach(cb => { if(cb.checked) checked++; });
+      const percent = Math.round((checked / checkboxes.length) * 100);
+      document.getElementById('progressBar').style.width = percent + '%';
+      document.getElementById('progressPercent').innerText = percent + '%';
+    }
+
+    // MODAL ARTIGOS DATA
+    const articlesData = {
+      artigo1: {
+        title: "Revisão por Quilometragem vs. Tempo: Entenda os Prazos",
+        content: `
+          <h3 class="text-xl font-bold text-white mb-2">Por que o óleo vence mesmo sem rodar?</h3>
+          <p class="mb-3">A substituição de fluidos e peças obedece à regra dupla: quilometragem acumulada ou tempo transcorrido (geralmente 10.000 km ou 12 meses).</p>
+          <p class="mb-3">O óleo sofre oxidação ao entrar em contato com o ar e os resíduos no carter. Mesmo com baixíssima rodagem, o lubrificante perde viscosidade e capacidade de proteção.</p>
+        `
+      },
+      artigo2: {
+        title: "Como Funciona a Avaliação de Usados?",
+        content: `
+          <h3 class="text-xl font-bold text-white mb-2">Parâmetros de Precificação</h3>
+          <p class="mb-3">Fatores como integridade da estrutura, estado de conservação do interior e histórico comprovado de revisões influenciam diretamente no valor final de repasse.</p>
+        `
+      },
+      artigo3: {
+        title: "Checklist Visual de Lataria e Estrutura",
+        content: `
+          <h3 class="text-xl font-bold text-white mb-2">Como Identificar Repinturas e Batidas</h3>
+          <p class="mb-3">Avalie o veículo sob luz natural, observando alinhamento de para-choques, portas e capô, além de diferenças de tonalidade ou textura na pintura.</p>
+        `
+      }
+    };
+
+    function openModalArticle(id) {
+      const art = articlesData[id];
+      if (!art) return;
+      document.getElementById('articleModalContent').innerHTML = `
+        <h2 class="text-2xl font-bold text-white mb-4">${art.title}</h2>
+        <div>${art.content}</div>
+      `;
+      document.getElementById('articleModal').classList.remove('hidden');
+    }
+
+    function closeArticleModal() {
+      document.getElementById('articleModal').classList.add('hidden');
+    }
+
+    function openLegalModal(type) {
+      let html = '';
+      if (type === 'privacidade') {
+        html = `
+          <h2 class="text-xl font-bold text-white mb-4">Política de Privacidade</h2>
+          <p class="mb-2">O portal <strong>consultoriadeautomoveis-go</strong> é mantido pela empresa <strong>Arte Cafe Gigi Fazendo Arte LTDA</strong> (CNPJ 03.066.128/0001-46).</p>
+          <p class="mb-2">Este site possui caráter puramente informativo e editorial. Não solicitamos dados de cartão, senhas ou documentos pessoais dos leitores.</p>
+        `;
+      } else {
+        html = `
+          <h2 class="text-xl font-bold text-white mb-4">Termos de Uso</h2>
+          <p class="mb-2">O acesso ao portal <strong>consultoriadeautomoveis-go</strong> implica o aceite destes termos.</p>
+          <p class="mb-2">O conteúdo é oferecido para fins informativos. Não emitimos pareceres cautelares oficiais ou vistorias de transferência com valor legal.</p>
+        `;
+      }
+      document.getElementById('legalModalContent').innerHTML = html;
+      document.getElementById('legalModal').classList.remove('hidden');
+    }
+
+    function closeLegalModal() {
+      document.getElementById('legalModal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
